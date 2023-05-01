@@ -123,30 +123,6 @@ public class LinkedList {
 	}
 	
 	/**
-	 * @return Returns nothing. It updates the list and inserts the node where position is specified
-	 */
-	public void insert(Object item) {
-		if(Head == null) {
-			Head = new Node(item);
-		}
-		
-		Node currentNode = Head;
-		Node prevNode = null;
-		
-		for(int i = 0; i < position && currentNode.nextNode() != null; i++) {
-			prevNode = currentNode;
-			currentNode = currentNode.nextNode();
-		}
-		
-		Node placeholder = new Node(item);
-		placeholder.setNextNode(currentNode.nextNode());
-		
-		currentNode.setNextNode(placeholder);
-		
-		size = size + 1;
-	}
-	
-	/**
 	 * @return Returns nothing. It updates the node list by removing the node with the specified id
 	 * @throws ListEmptyException 
 	 */

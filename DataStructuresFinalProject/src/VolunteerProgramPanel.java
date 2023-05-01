@@ -278,7 +278,7 @@ public class VolunteerProgramPanel extends JPanel {
 		Jobs job1 = new Jobs(1, "Trash pick up", "Help pick up trash around the park", "Wednesday", "10:10", "Open", 0, "None");
 		Jobs job2 = new Jobs(2, "Food Bank Helper", "Help with delivery of donated food", "Monday", "12:30", "Open", 0, "None");
 		Jobs job3 = new Jobs(3, "Library Assitant", "Help the library with any tasks", "Thursday", "9:00", "Open", 0, "None");
-		Jobs job4 = new Jobs(4, "Food Bank Helper", "Help with delivery of donated food", "Tuesday", "12:30", "Open", 0, "None");
+		Jobs job4 = new Jobs(4, "Food Bank Helper", "Help with delivery of donated food", "Tuesday", "12:30", "Open", 0, "None"); //This is her to create some jobs that will populate the open jobs list
 		Jobs job5 = new Jobs(5, "Library Assitant", "Help the library with any tasks", "Friday", "9:00", "Open", 0, "None");
 		openJobsList.add(job1);
 		openJobsList.add(job2);
