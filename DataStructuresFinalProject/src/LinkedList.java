@@ -59,11 +59,14 @@ public class LinkedList {
 	}
 	
 	/**
+	 * 66: Returns one if nothing is with the Volunteer list
+	 * 75: While loop that goes to the end of the list
+	 * 79: Grabs the last node of list and adds it to one two create the new id
 	 * @return Returns an integer that will be used for the volunteers id number
 	 */
 	public int getVolunteerLastNode() {
 		if(Head == null) {
-			return 1;		//Returns one if nothing is with the Volunteer list
+			return 1;		
 		}
 		
 		Node currentNode = Head;
@@ -71,18 +74,20 @@ public class LinkedList {
 		
 		while(currentNode.nextNode() != null) {
 			prevNode = currentNode;
-			currentNode = currentNode.nextNode(); //While loop that goes to the end of the list
+			currentNode = currentNode.nextNode(); 
 		}
 		
-		int currentId = currentNode.grabVolunteerId(); //Grabs the last node of list and adds it to one two create the new id
+		int currentId = currentNode.grabVolunteerId(); 
 		int newId = currentId + 1;
 		return newId;
 	}
 	
 	/**
+	 * 89: Function is similar to getVolunteerLastNode. Used for setting up the jobs
+	 * 102: Grabs the last node of list and adds it to one two create the new id
 	 * @return Returns an integer that will be used for the Jobs id number
 	 */
-	public int getJobLastNode() { //Function is similar to getVolunteerLastNode. Used for setting up the jobs
+	public int getJobLastNode() { 
 		if(Head == null) {
 			return 1;
 		}
@@ -95,7 +100,7 @@ public class LinkedList {
 			currentNode = currentNode.nextNode();
 		}
 		
-		int currentId = currentNode.grabJobId();  //Grabs the last node of list and adds it to one two create the new id
+		int currentId = currentNode.grabJobId();  
 		int newId = currentId + 1;
 		return newId;
 	}
@@ -123,6 +128,10 @@ public class LinkedList {
 	}
 	
 	/**
+	 * 141: First checks if there is an entry within the list, with the same id that is requested to be deleted
+	 * 153: Checks to make the list is not empty and the id has passed the idcheck
+	 * 158: Checks if the specified Id is at the front of the linked list
+	 * 164: If not, will continue through the for loop until it is found or isn't
 	 * @return Returns nothing. It updates the node list by removing the node with the specified id
 	 * @throws ListEmptyException 
 	 */
@@ -133,7 +142,7 @@ public class LinkedList {
 		boolean idCheck = false;
 		
 		for(int i = 0; i <= size; i++) {
-			if(item == currentNode.grabVolunteerId()) { //First checks if there is an entry within the list, with the same id that is requested to be deleted
+			if(item == currentNode.grabVolunteerId()) { 
 				idCheck = true;
 				break;
 			}
@@ -144,16 +153,16 @@ public class LinkedList {
 		}
 		
 
-		if(! this.isEmpty() && idCheck == true) { //Checks to make the list is not empty and the id has passed the idcheck
+		if(! this.isEmpty() && idCheck == true) { 
 			currentNode = Head;
 			prevNode = null;
 			for(int i = 0; i <= size; i++) {
-				if(currentNode == Head && item == currentNode.grabVolunteerId()) { //Checks if the specified Id is at the front of the linked list
+				if(currentNode == Head && item == currentNode.grabVolunteerId()) { 
 					Head = currentNode.nextNode();
 					size = size - 1;
 					break;
 				}
-				else if(item == currentNode.grabVolunteerId()) { //If not, will continue through the for loop until it is found or isn't
+				else if(item == currentNode.grabVolunteerId()) { 
 					prevNode.setNextNode(currentNode.nextNode());
 					size = size - 1;
 					break;
@@ -218,30 +227,37 @@ public class LinkedList {
 	}
 	
 	/**
+	 * 235: Sends the current Node to the next one, due to a strange error for it seemed to duplicate an entry in the list
+	 * 243-244: The current node and the next node each grabs the day from their own node
+	 * 245-246: Each converts the day into a number so the nodes can be compared
+	 * 249: Checks if the currentNode is greater than the next node
+	 * 250: If so, changes the currentNode
+	 * 253: Moves onto the next node that will be compared
+	 * 259: Updates the node list so that it reflects the new placement
 	 * @return Returns nothing. It updates the linked list by sorting the linked list by the days
 	 * @throws ListEmptyException 
 	 */
 	public void daySelectionSort() throws ListEmptyException {
 		Node currentNode = Head;
-		currentNode = currentNode.next; //Sends the current Node to the next one, due to a strange error for it seemed to duplicate an entry in the list
+		currentNode = currentNode.next; 
 		if(! this.isEmpty()) {
 			while (currentNode != null) {
 				Node temp1 = currentNode;
 				Node temp2 = temp1.next;
 			    while (temp2 != null) {
-			    	String temp1Day = temp1.grabJobDay(); //The current node and the next node each grabs the day from their own node
+			    	String temp1Day = temp1.grabJobDay(); 
 			        String temp2Day = temp2.grabJobDay();
-			        int tempDayNum = determineDay(temp1Day); //Each converts the day into a number so the nodes can be compared
+			        int tempDayNum = determineDay(temp1Day); 
 			        int temp2Num = determineDay(temp2Day);
-			        if (tempDayNum > temp2Num) { //Checks if the currentNode is greater than the next node
-			        	temp1 = temp2; //If so, changes the currentNode
+			        if (tempDayNum > temp2Num) { 
+			        	temp1 = temp2; 
 			        }
-			        temp2 = temp2.next; //Moves onto the next node that will be compared
+			        temp2 = temp2.next; 
 			    }
 			    
 			    Object updatedObject =  currentNode.data;
 			    currentNode.data = temp1.data;
-			    temp1.data = updatedObject;			//Updates the node list so that it reflects the new placement
+			    temp1.data = updatedObject;			
 			    currentNode = currentNode.next;
 			}
 			
@@ -252,28 +268,34 @@ public class LinkedList {
 	}
 	
 	/**
+	 * 276: Sends the current Node to the next one, due to a strange error for it seemed to duplicate an entry in the list
+	 * 284: The current node and the next node each grabs the volunteerId from their node within the taken jobs list
+	 * 287: Checks if the currentNode is greater than the next node
+	 * 288: If so, changes the currentNode
+	 * 292: Moves onto the next node that will be compared
+	 * 298: Updates the node list so that it reflects the new placement
 	 * @return Returns nothing. It updates the linked list by sorting the linked list by the volunteers id
 	 * @throws ListEmptyException 
 	 */
 	public void volunteerSelectionSort() throws ListEmptyException {
 		Node currentNode = Head;
-		currentNode = currentNode.next; //Sends the current Node to the next one, due to a strange error for it seemed to duplicate an entry in the list
+		currentNode = currentNode.next; 
 		if(! this.isEmpty()) {
 			while (currentNode != null) {
 				Node temp1 = currentNode;
 				Node temp2 = temp1.next;
 			    while (temp2 != null) {
-			    	int temp1Id = temp1.grabJobVolunteerId(); //The current node and the next node each grabs the volunteerId from their node within the taken jobs list
+			    	int temp1Id = temp1.grabJobVolunteerId(); 
 			    	int temp2Id  = temp2.grabJobVolunteerId();
-			        if (temp1Id > temp2Id) { //Checks if the currentNode is greater than the next node
-			        	temp1 = temp2; //If so, changes the currentNode
+			        if (temp1Id > temp2Id) { 
+			        	temp1 = temp2; 
 			        }
-			        temp2 = temp2.next; //Moves onto the next node that will be compared
+			        temp2 = temp2.next; 
 			    }
 			    
 			    Object updatedObject =  currentNode.data;
 			    currentNode.data = temp1.data;
-			    temp1.data = updatedObject;			//Updates the node list so that it reflects the new placement
+			    temp1.data = updatedObject;			
 			    currentNode = currentNode.next;
 			}
 			
@@ -284,28 +306,34 @@ public class LinkedList {
 	}
 	
 	/**
+	 * 315: Sends the current Node to the next one, due to a strange error for it seemed to duplicate an entry in the list
+	 * 321: The current node and the next node each grabs the job Id from their node within the taken jobs list
+	 * 324: Checks if the currentNode is greater than the next node
+	 * 325: If so, changes the currentNode
+	 * 330: Moves onto the next node that will be compared
+	 * 336: Updates the node list so that it reflects the new placement
 	 * @return Returns nothing. It updates the linked list by sorting the linked list by the jobs id to reset the list
 	 * @throws ListEmptyException 
 	 */
 	public void resetSelectionSort() throws ListEmptyException {
 		Node currentNode = Head;
-		currentNode = currentNode.next;		//Sends the current Node to the next one, due to a strange error for it seemed to duplicate an entry in the list
+		currentNode = currentNode.next;		
 		if(! this.isEmpty()) {
 			while (currentNode != null) {
 				Node temp1 = currentNode;
 				Node temp2 = temp1.next;
 			    while (temp2 != null) {
-			    	int temp1IdNum = temp1.grabJobId(); //The current node and the next node each grabs the job Id from their node within the taken jobs list
+			    	int temp1IdNum = temp1.grabJobId(); 
 			    	int temp2Num = temp2.grabJobId();
-			        if (temp1IdNum > temp2Num) { //Checks if the currentNode is greater than the next node
-			        	temp1 = temp2;  //If so, changes the currentNode
+			        if (temp1IdNum > temp2Num) { 
+			        	temp1 = temp2;  
 			        }
-			        temp2 = temp2.next;   //Moves onto the next node that will be compared
+			        temp2 = temp2.next;   
 			    }
 			    
 			    Object updatedObject =  currentNode.data;
 			    currentNode.data = temp1.data;
-			    temp1.data = updatedObject;			//Updates the node list so that it reflects the new placement
+			    temp1.data = updatedObject;			
 			    currentNode = currentNode.next;
 			}
 			
@@ -349,6 +377,10 @@ public class LinkedList {
 	}
 	
 	/**
+	 * 394: First checks if the Job that was selected is in the open jobs list
+	 * 412: Sends the volunteerId and volunteerName to another function so they can be added to the object
+	 * 413: Checks if the job is in the head of the list
+	 * 416: If not, will go through the whole list until it is found or not
 	 * @return Returns an updated job object that adds a volunteers id and name to the object and moves it to the taken job list
 	 * @throws ListEmptyException 
 	 */
@@ -360,7 +392,7 @@ public class LinkedList {
 		Object takenJob = new Jobs();
 		
 		for(int i = 0; i <= size; i++) {
-			if(selectedJobId == currentNode.grabJobId()) { //First checks if the Job that was selected is in the open jobs list
+			if(selectedJobId == currentNode.grabJobId()) { 
 				jobIdCheck = true;
 				break;
 			}
@@ -377,14 +409,14 @@ public class LinkedList {
 			
 			for(int i = 0; i <= size; i++) {
 				if(currentNode == Head && selectedJobId == currentNode.grabJobId()) {
-					takenJob = currentNode.updateJob(selectedVolunteerId, volunteerName); //Sends the volunteerId and volunteerName to another function so they can be added to the object
-					Head = currentNode.nextNode();						//Checks if the job is in the head of the list
+					takenJob = currentNode.updateJob(selectedVolunteerId, volunteerName); 
+					Head = currentNode.nextNode();						
 					size = size - 1;
 					break;
 				}
 				else if(selectedJobId == currentNode.grabJobId()) {
 					takenJob = currentNode.updateJob(selectedVolunteerId, volunteerName);
-					prevNode.setNextNode(currentNode.nextNode());			//If not, will go through the whole list until it is found or not
+					prevNode.setNextNode(currentNode.nextNode());			
 					size = size - 1;
 					break;
 				}
@@ -402,6 +434,9 @@ public class LinkedList {
 	}
 	
 	/**
+	 * 448: Checks to make sure the selected job is within the taken jobs list
+	 * 466: Checks if the object is in the head node
+	 * 474: If not, will go through the whole list until it is found or not
 	 * @return Returns an updated job object that removes the volunteers id and name from the object and moves it to the open job list
 	 * @throws ListEmptyException 
 	 */
@@ -413,7 +448,7 @@ public class LinkedList {
 		Object openJob = new Jobs();
 		
 		for(int i = 0; i <= size; i++) {
-			if(selectedTakenJobId == currentNode.grabJobId()) { //Checks to make sure the selected job is within the taken jobs list
+			if(selectedTakenJobId == currentNode.grabJobId()) { 
 				jobIdCheck = true;
 				break;
 			}
@@ -430,14 +465,14 @@ public class LinkedList {
 			
 			for(int i = 0; i <= size; i++) {
 				if(currentNode == Head && selectedTakenJobId == currentNode.grabJobId()) {
-					openJob = currentNode.resetJob();				//Checks if the object is in the head node
+					openJob = currentNode.resetJob();				
 					Head = currentNode.nextNode();
 					size = size - 1;
 					break;
 				}
 				else if(selectedTakenJobId == currentNode.grabJobId()) {
 					openJob = currentNode.resetJob();
-					prevNode.setNextNode(currentNode.nextNode());	//If not, will go through the whole list until it is found or not
+					prevNode.setNextNode(currentNode.nextNode());	
 					size = size - 1;
 					break;
 				}
@@ -509,10 +544,11 @@ class Node {
 	}
 	
 	/**
+	 * Creates a dummy object that will hold the object. This is used in the other methods in the node class when needing to grab something from the object
 	 * Function that is used to help grab the volunteerId by using the getVolunteerID function from the volunteer class
 	 */
 	public int grabVolunteerId() {
-		Volunteer dummyObject = new Volunteer(); //Creates a dummy object that will hold the object. This is used in the other methods in the node class when needing to grab something from the object
+		Volunteer dummyObject = new Volunteer(); 
 		dummyObject = (Volunteer) data;
 		int vId = dummyObject.getVolunteerId();
 		return vId;

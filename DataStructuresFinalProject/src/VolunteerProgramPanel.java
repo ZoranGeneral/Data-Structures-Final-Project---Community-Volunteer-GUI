@@ -295,6 +295,7 @@ public class VolunteerProgramPanel extends JPanel {
 	
 	//Section 3
 	//Section is where all the action listeners are set up, created, and connected to specified buttons
+	//Add Volunteer button
 	class AddButtonListener implements ActionListener{
 
 		@Override
@@ -339,7 +340,7 @@ public class VolunteerProgramPanel extends JPanel {
 		} //The enter Listener class that will activate when the enter button is clicked
 
 	}
-	
+	//Delete Volunteer button
 	class DeleteButtonListener implements ActionListener{
 
 		@Override
@@ -367,7 +368,7 @@ public class VolunteerProgramPanel extends JPanel {
 		} //The enter Listener class that will activate when the enter button is clicked
 
 	}
-	
+	//Assigns a volunteer to a job and removes it from the open jobs list
 	class IdAddButtonListener implements ActionListener{
 
 		@Override
@@ -407,7 +408,7 @@ public class VolunteerProgramPanel extends JPanel {
 		} //The enter Listener class that will activate when the enter button is clicked
 
 	}
-	
+	//Sorts the open jobs list by days button
 	class SortByDayButtonListener implements ActionListener{
 
 		@Override
@@ -430,7 +431,7 @@ public class VolunteerProgramPanel extends JPanel {
 		} //The enter Listener class that will activate when the enter button is clicked
 
 	}
-	
+	//Resets the sort and sorts the list by job id button
 	class OpenResetButtonListener implements ActionListener{
 
 		@Override
@@ -454,7 +455,7 @@ public class VolunteerProgramPanel extends JPanel {
 		} //The enter Listener class that will activate when the enter button is clicked
 
 	}
-	
+	//Removes a volunteer from a job by job Id and returns it to the open jobs list
 	class RemoveButtonListener implements ActionListener{
 
 		@Override
@@ -496,6 +497,7 @@ public class VolunteerProgramPanel extends JPanel {
 
 	}
 	
+	//Sorts the taken jobs list by volunteer id
 	class TakenSortVolunteerIDButtonListener implements ActionListener{
 
 		@Override
@@ -518,6 +520,7 @@ public class VolunteerProgramPanel extends JPanel {
 		} //The enter Listener class that will activate when the enter button is clicked
 	}
 	
+	//Sorts the taken job list by days
 	class TakenSortDayButtonListener implements ActionListener{
 
 		@Override
@@ -541,7 +544,7 @@ public class VolunteerProgramPanel extends JPanel {
 
 
 	}
-	
+	//Resets the taken jobs list and sorts it by job Id
 	class TakenResetButtonListener implements ActionListener{
 
 		@Override
